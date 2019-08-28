@@ -66,7 +66,6 @@ async getData(){
 每一次的请求都单独进行错误处理，确实是处理了所有的错误，但是让代码较为冗长，接下来的一种应该是类似的
 
 ```JavaScript
-
 // 抽离成公共方法
 const awaitWrap = (promise) => {
     return promise
