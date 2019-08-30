@@ -3,6 +3,8 @@
 [原文点这里](https://juejin.im/post/5d4d0ec651882549594e7293#heading-18)，来自掘金[@
 JowayYoung](https://juejin.im/user/584ec3a661ff4b006cd6383e)
 
+## 布局部分
+
 使用 `vw` 定制 `rem` 自适应移动端布局， `rem` 的单位长度是根据 `html` 节点的 `font-size` 而来的，再配合 `calc()` 的计算，实现自适应
 
 ```CSS
@@ -32,3 +34,64 @@ html{
 
 使用 Flex 或 `inline-block` 横向排布元素，使用 `overflow-x` 进行控制滚动，当然，要点不是这个，而是，可以使用 `::-webkit-scrollbar`、`::-webkit-scrollbar-track`、`::-webkit-scrollbar-thumb` 进行滚动条美化，仅限于 `webkit` 渲染引擎
 
+使用 `text-overflow: ellipsis` 表示对于溢出容器的文本省略，并在尾部添加 `...`，单行的实现自然简单，多行则让人头疼，但是有补救的方法
+
+```CSS
+/* webkit */
+.class {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  /* autoprefixer: off */
+  -webkit-box-orient: vertical;
+   /* autoprefixer: on */
+}
+
+/* 非 webkit */
+/* 这个不管几行文本都会加 ...，但是可以借助 JS 动态添加 class 来实现稍好一些的效果 */
+.class{
+  overflow: hidden;
+  position: relative;
+  max-height: 90px;
+
+  &::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding-left: 40px;
+    background: linear-gradient(to right, transparent, #fff 50%);
+    content: "...";
+  }
+}
+```
+
+论如何画出细腻的 `1px` 边框，借助 `::before` 或者 `::after` 配合以 `transform: scale()`，其实就是先做大号，再缩小一倍
+
+```JavaScript
+&::after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: 1px solid $red;
+  width: 200%;
+  height: 200%;
+  content: "";
+  transform: scale(.5);
+  transform-origin: left top;
+}
+```
+
+使用 `transform: scale3d()` 通过控制不同的参数达成水平翻转（`transform: scale3d(1, -1, 1)`）、垂直翻转（`transform: scale3d(-1, 1, 1)`）、倒序翻转（`transform: scale3d(-1, -1, 1)`）
+
+使用 `letter-spacing` 设置负值，可以实现文本倒序，但是这个负值，至少是 `font-size` 的两倍
+
+使用 Flex 横向布局时，配合 `margin-left: auto`，让最后一个元素向右对齐，竖向布局类似
+
+## 行为部分
+
+## 色彩部分
+
+## 图形部分
+
+## 组件部分
