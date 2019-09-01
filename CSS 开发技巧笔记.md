@@ -3,6 +3,8 @@
 [原文点这里](https://juejin.im/post/5d4d0ec651882549594e7293#heading-18)，来自掘金[@
 JowayYoung](https://juejin.im/user/584ec3a661ff4b006cd6383e)
 
+此处的内容基本和原文一样，仅仅是加上了一些额外的内容，所以请去看原文吧
+
 ## 布局部分
 
 使用 `vw` 定制 `rem` 自适应移动端布局， `rem` 的单位长度是根据 `html` 节点的 `font-size` 而来的，再配合 `calc()` 的计算，实现自适应
@@ -89,6 +91,35 @@ html{
 使用 Flex 横向布局时，配合 `margin-left: auto`，让最后一个元素向右对齐，竖向布局类似
 
 ## 行为部分
+
+使用 `-webkit-overflow-scrolling: touch` 优化页面滚动的流畅度
+
+使用 `transform: translateZ(0)` 开启特定元素使用硬件加速
+
+使用 `attr()` 抓取标签中的 `data-*` 属性，之后将其赋值到 `content`，如 `content: attr(data-*)`，当然，`attr()` 支持其他任意标签属性
+
+给 `<input>` 标签加上 `:valid`（验证通过）和 `:invalid`（验证未通过）配合 `pattern` 实现表单验证效果
+
+使用 `pointer-events:none` 禁用事件触发(默认事件、冒泡事件、鼠标事件、键盘事件等)，相当于 `<button>` 的 `disabled`
+
+使用 `+` 或 `~` 配合 `label` 的 `for`，美化 `radio` 或 `checkbox` 的选择行为，其实就是将 `radio` 或 `checkbox` 进行隐藏处理，而使用 `label` 的 `for`，点了 `label` 就是点了 `radio` 或 `checkbox` 的效果，再利用 `radio` 或 `checkbox` 的 `:checked` 伪类选择器，配合上 `+` 或者 `~` 选择到对应的 `label`，改变其样式，利用 `radio` 的 `:checked` 配合上 `+` 或 `~` 能实现点击后改变某一样式的效果，而不使用 Javascript
+
+使用 `:focus-within` 捕获子元素表单控件触发 `focus` 和 `blur` 事件后往夫元素的冒泡来设置样式，可玩性极高，参考原文中的这个[案例](https://codepen.io/JowayYoung/pen/BaBjaBP)，使用 `:placeholder-shown` 在 `<input>` 设置的 `placeholder` 后，`placeholder` 还在显示时的样式，借助 `:not()` 再配合以 `+` 或 `~` 可以用来做 `<input>` 旁的内容根据 `<input>` 是否有输入来显示的效果，比使用 JavaScript 要轻松不知道多少
+
+使用无数平铺的小单元格作为背景，配合 `:hover` 来实现鼠标轨迹效果
+
+使用 `max-height` 定位收起的最小高度和展开的最大高度，配合 `:hover`，能实现隐藏子项的导航栏，和折叠的悬浮面板等效果，只是看起来的效果似乎离完美还差点意思，鼠标离开会存在收起延迟的情况
+
+使用 `background-attachment: fixed` 或 `transform: translateZ()` 让多层背景以不同的速度移动，形成视觉差，使其有立体的运动效果，`translateZ()` 的参数值越小，移动速度越慢，可以是负数
+
+使用 `transform-delay` 或 `animation-delay` 设置负值延时保留动画起始帧，让动画进入页面不用等待即可运行，用来做开场动画可还行，比如加载效果
+
+使用 `resize` 设置自由拉伸来调整目标元素的宽度，其属性如下
+
+- `none`：不使用 `resize`
+- `both`：横竖均可调整
+- `horizontal`：横向可调整
+- `vertical`：竖向可调整
 
 ## 色彩部分
 
