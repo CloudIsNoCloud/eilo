@@ -102,7 +102,7 @@ html{
 
 使用 `pointer-events:none` 禁用事件触发(默认事件、冒泡事件、鼠标事件、键盘事件等)，相当于 `<button>` 的 `disabled`
 
-使用 `+` 或 `~` 配合 `label` 的 `for`，美化 `radio` 或 `checkbox` 的选择行为，其实就是将 `radio` 或 `checkbox` 进行隐藏处理，而使用 `label` 的 `for`，点了 `label` 就是点了 `radio` 或 `checkbox` 的效果，再利用 `radio` 或 `checkbox` 的 `:checked` 伪类选择器，配合上 `+` 或者 `~` 选择到对应的 `label`，改变其样式，利用 `radio` 的 `:checked` 配合上 `+` 或 `~` 能实现点击后改变某一样式的效果，而不使用 Javascript
+使用 `+` 或 `~` 配合 `label` 的 `for`，美化 `radio` 或 `checkbox` 的选择行为，其实就是将 `radio` 或 `checkbox` 进行隐藏处理，而使用 `label` 的 `for`，点了 `label` 就是点了 `radio` 或 `checkbox` 的效果，再利用 `radio` 或 `checkbox` 的 `:checked` 伪类选择器，配合上 `+` 或者 `~` 选择到要改变样式的元素，利用 `radio` 的 `:checked` 配合上 `+` 或 `~` 能实现点击后改变某一样式的效果，而不使用 Javascript
 
 使用 `:focus-within` 捕获子元素表单控件触发 `focus` 和 `blur` 事件后往夫元素的冒泡来设置样式，可玩性极高，参考原文中的这个[案例](https://codepen.io/JowayYoung/pen/BaBjaBP)，使用 `:placeholder-shown` 在 `<input>` 设置的 `placeholder` 后，`placeholder` 还在显示时的样式，借助 `:not()` 再配合以 `+` 或 `~` 可以用来做 `<input>` 旁的内容根据 `<input>` 是否有输入来显示的效果，比使用 JavaScript 要轻松不知道多少
 
@@ -153,6 +153,37 @@ html{
 
 使用 `mask` 为图像背景生成蒙层提供遮罩效果，可以拿来高斯模糊蒙层、票劵(电影票、购物卡)和遮罩动画，但是应该用的不多，参考原文中的这个[案例](https://codepen.io/JowayYoung/pen/xxKZdZN)
 
-使用 `linear-gradient` 绘制波浪线，参考原文中的这个[案例](https://codepen.io/JowayYoung/pen/EqEzwq)，应该说，这个属性不只能绘制波浪线，还能绘制很多其他效果
+使用 `linear-gradient` 绘制波浪线，参考原文中的这个[案例](https://codepen.io/JowayYoung/pen/EqEzwq)，应该说，这个属性不只能绘制波浪线，还能绘制很多其他效果，比如说间断颜色的彩带，参考原文中的这个[案例](https://codepen.io/JowayYoung/pen/bGbeXZG)，比如说方格背景，参考原文中的这个[案例](https://codepen.io/JowayYoung/pen/RwboXoV)
+
+使用 `conic-gradient` 绘制饼图
+
+使用 `box-shadow` 绘制单侧投影，这里利用的是定位取负值，以及 `box-shadow` 的取负值，当然，`box-shadow` 的可玩性非常非常高，可以同时设置很多次的，并且都会生效，这就是新世界的大门，这么说起来，`background`
+
+使用 `filter` 配合 `:after` 或 `before`，再配合 `background: inherit`，实现描绘头像彩色阴影，再加以大小形状位置的调整，参考原文中的这个[案例](https://codepen.io/JowayYoung/pen/GRKjYap)
+
+使用 `box-shadow` 模拟蒙层的中间镂空，其实就是设置一个值巨大的 `box-shadow`，由此，其实可以利用 `box-shadow` 实现模态框的背景，或者图片裁剪以及新手引导
+
+使用 `outline` 描绘内边框，利用 `outline-offset` 属性设置负值，再配合以适当的 `padding`，岂不美哉
 
 ## 组件部分
+
+使用 `counter-increment: index 1`（index 可以理解为计数器名字，1 表示权重） 配合 `counter(index)`，直接使用 CSS 实现计数器效果，再利用 `data-*` 配合 `attr()` 设置单位
+
+使用 `+` 选择器，配合 `:hover`，能做出下划线跟随鼠标的导航栏，参考原文中的这个[案例](https://codepen.io/JowayYoung/pen/eYOJbNv)
+
+使用 `mix-blend-mode` 设置元素的内容如何与元素父元素及其背景的混合模式，实现拾色器改变图像色相的换色器，其参数过多就不一一列举，可以去 MDN 查看其[详情](https://developer.mozilla.org/en-US/docs/Web/CSS/mix-blend-mode)
+
+使用 `:before` 和 `:after` 配合形状，大小以及动画的设置，动画的时间要把握好，实现状态悬浮球效果，参考原文中的这个[案例](https://codepen.io/JowayYoung/pen/WNewOxa)
+
+使用 `scroll-behavior` 当用户手动导航或者 CSSOM scrolling API 触发滚动操作时的效果，其属性值如下
+
+- `auto`：基本上就是直接闪现
+- `smooth`：平稳滚动
+
+使用 `~` 选择器，配合 `<input type="radio" id="id">` 再配合 `<label for="id"></label>`，实现可切换内容的导航栏，而且很好看，参考原文中的这个[案例](https://codepen.io/JowayYoung/pen/oNvzoZg)，还可以配合 `<input type="checkbox" id="id">` 再配合 `<label for="id"></label>`，实现折叠面板，当然，也用到了 `max-length`，参考原文中的这个[案例](https://codepen.io/JowayYoung/pen/NWKRMjo)
+
+使用 Flex 布局倒序五颗星星，配合 `<input type="radio">` 再配合 `:checked` 或 `:hover` 利用 `~` 选择器实现星级评分
+
+## 总结
+
+首先，此处列举的都是较为常用，且不复杂的内容，并非原文中的所有内容，其次，如果真的好好学 CSS，很多效果就完全没有 JavaScript 什么事情，但这就不意味着这些效果不要用 JavaScript 控制，而应该相互融合，使用最佳的解决方案，总之，还是要多思考，而 CSS 需要学习的东西也还有很多，不能说这个效果用 JavaScript 也能实现，但是，有的效果，真的就是纯 CSS 就能实现，并且实现效果，步骤，复杂度都还要更低，并且，界面好不好看，很多时候，都是 CSS 说了算
