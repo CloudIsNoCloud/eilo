@@ -6,7 +6,7 @@ JowayYoung](https://juejin.im/user/584ec3a661ff4b006cd6383e)
 此处的内容基本和原文一样，仅仅是加上了一些额外的内容，所以请去看原文吧
 
 ## 布局部分
- 
+
 使用 `vw` 定制 `rem` 自适应移动端布局， `rem` 的单位长度是根据 `html` 节点的 `font-size` 而来的，再配合 `calc()` 的计算，实现自适应
 
 ```CSS
